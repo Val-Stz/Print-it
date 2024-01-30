@@ -34,10 +34,16 @@ function updateSlide(index) {
 
 prevImage.addEventListener("click", function () {
     currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = slides.length - 1;
+    }
     updateSlide(currentIndex);
 });
 
 nextImage.addEventListener("click", function () {
     currentIndex++;
+    if (currentIndex > slides.length - 1) {
+        currentIndex = 0;
+    }
     updateSlide(currentIndex);
 });
