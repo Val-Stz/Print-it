@@ -47,3 +47,18 @@ nextImage.addEventListener("click", function () {
     }
     updateSlide(currentIndex);
 });
+
+const dotsContainer = document.getElementById("dots");
+slides.forEach((slide, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (index === currentIndex) {
+        dot.classList.add("dot_selected");
+    }
+    dot.addEventListener("click", function () {
+        currentIndex = index;
+        updateSlide(currentIndex);
+        updateDots();
+    });
+    dotsContainer.appendChild(dot);
+});
