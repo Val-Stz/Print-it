@@ -32,12 +32,24 @@ function updateSlide(index) {
     tagLine.innerHTML = currentSlide.tagLine;
 }
 
+function updateDots() {
+    const dots = document.querySelectorAll(".dot");
+    dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+            dot.classList.add("dot_selected");
+        } else {
+            dot.classList.remove("dot_selected");
+        }
+    });
+}
+
 prevImage.addEventListener("click", function () {
     currentIndex--;
     if (currentIndex < 0) {
         currentIndex = slides.length - 1;
     }
     updateSlide(currentIndex);
+    updateDots();
 });
 
 nextImage.addEventListener("click", function () {
@@ -46,6 +58,7 @@ nextImage.addEventListener("click", function () {
         currentIndex = 0;
     }
     updateSlide(currentIndex);
+    updateDots();
 });
 
 const dotsContainer = document.getElementById("dots");
